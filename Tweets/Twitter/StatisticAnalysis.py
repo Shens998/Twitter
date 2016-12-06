@@ -9,13 +9,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-links = np.genfromtxt(".\data\haiyan-links.csv", dtype=str, delimiter=',', skip_header=1, usecols=(0,1))
+links = np.genfromtxt(".\data\haiyan-links.csv", dtype=str, delimiter=';', skip_header=1, usecols=(0,1))
 dic = {}
-for n in sorted(np.reshape(links, 558)):
+for n in sorted(np.reshape(links, -1)):
     if n not in dic:
         dic[n] = 1
     else:
         dic[n] += 1
-plt.bar(range(95), list(dic.values()))
-plt.xticks(range(95), list(dic.keys(), rotation=90))
+plt.bar(range(95), dic)
+plt.xticks(range(95), dic, rotation=90)
 plt.show()
